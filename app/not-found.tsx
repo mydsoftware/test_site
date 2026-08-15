@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function NotFound(){return <section className="section"><div className="container" style={{textAlign:'center'}}><span className="eyebrow">خطای ۴۰۴</span><h1>صفحه موردنظر پیدا نشد.</h1><p>ممکن است آدرس تغییر کرده باشد.</p><Link className="btn" href="/">بازگشت به صفحه اصلی</Link></div></section>}
