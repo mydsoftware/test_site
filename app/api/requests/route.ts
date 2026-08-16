@@ -1,0 +1,4 @@
+import {NextResponse} from 'next/server';import {readRequests,writeRequests} from '@/lib/request-store';
+export const runtime='nodejs';
+export async function GET(){return NextResponse.json(await readRequests())}
+export async function POST(req:Request){const b=await req.json();if(!b.name||!b.phone||!b.email||!b.projectType||!b.message)return NextResponse.json({error:'اطلاعات ضروری کامل نیست'},{status:400});if(!/^09\d{9}$/.test(String(b.phone).replace(/\s/g,'')))return NextResponse.json({error:'شماره موبایل معتبر نیست'},{status:400});const items=await readRequests();const item={id:crypto.randomUUID(),name:b.name,phone:b.phone,email:b.email,projectType:b.projectType,budget:b.budget||'',start:b.start||'',message:b.message,createdAt:new Date().toISOString()};items.unshift(item);await writeRequests(items);return NextResponse.json({ok:true,id:item.id},{status:201})}
