@@ -1,2 +1,2 @@
-import Link from 'next/link';import {projects} from '@/data/projects';
-export default function Projects(){return <><section className="page-hero"><div className="container"><span className="eyebrow">نمونه‌کارها</span><h1>پروژه‌هایی که داستان خودشان را دارند.</h1></div></section><section className="section"><div className="container"><div className="grid-3">{projects.map(p=><Link className="project" key={p.id} href={`/projects/${p.id}`} style={{backgroundImage:`url(${p.image})`}}><div className="project-info"><h3>{p.title}</h3><p>{p.category} · {p.location} · {p.status}</p></div></Link>)}</div></div></section></>}
+import ProjectBrowser from './ProjectBrowser';
+export default function Projects(){return <><section className="page-hero"><div className="container"><span className="eyebrow">نمونه‌کارها</span><h1>پروژه‌هایی که داستان خودشان را دارند.</h1></div></section><section className="section"><div className="container"><ProjectBrowser/></div></section></>}
