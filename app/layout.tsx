@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import MobileMenu from "../components/MobileMenu";
 
 export const metadata: Metadata = {
   title: "آرمان سازه | ساختن آینده، با مهندسی امروز",
@@ -16,8 +17,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return <html lang="fa" dir="rtl"><body>
     <header className="header"><div className="container nav-wrap">
       <Link className="brand" href="/"><span className="brand-mark">AS</span><span>آرمان سازه</span></Link>
-      <nav className="nav">{nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
-      <Link className="header-cta" href="/contact">درخواست مشاوره</Link>
+      <nav className="nav" aria-label="منوی اصلی">{nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
+      <div className="desktop-cta"><Link className="header-cta" href="/contact">درخواست مشاوره</Link></div>
+      <MobileMenu />
     </div></header>
     <main>{children}</main>
     <footer className="footer"><div className="container footer-grid">
